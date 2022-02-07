@@ -17,7 +17,10 @@ public class EmployeeService {
 	private EmployeeRepository repository;
 
 	public List<Employee> showList() {
-		List<Employee> employeeList = repository.findAll();
-		return employeeList;
+		return repository.findAll();
+	}
+
+	public Employee showDetail(Integer id) {
+		return repository.load(id);
 	}
 }
