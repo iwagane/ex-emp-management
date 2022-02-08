@@ -60,8 +60,14 @@ public class AdministratorController {
 			return "administrator/login";
 		} else {
 			session.setAttribute("administratorName", administrator.getName());
-			return "foward:/employee/showList";
+			return "forward:/employee/showList";
 		}
+	}
+
+	@RequestMapping("/logout")
+	public String logout() {
+		session.invalidate();
+		return "redirect:/";
 	}
 
 }
