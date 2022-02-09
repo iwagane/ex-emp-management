@@ -1,8 +1,6 @@
 package jp.co.sample.form;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 
 public class UpdateEmployeeForm {
 	private String id;
@@ -30,14 +28,7 @@ public class UpdateEmployeeForm {
 	}
 
 	public Date getDateHireDate() {
-		SimpleDateFormat format = new SimpleDateFormat();
-		try {
-			return format.parse(hireDate);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		return Date.valueOf(hireDate);
 	}
 
 	public String getId() {
