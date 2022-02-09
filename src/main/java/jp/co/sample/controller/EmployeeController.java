@@ -2,6 +2,7 @@ package jp.co.sample.controller;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,8 +41,12 @@ public class EmployeeController {
 
 	@RequestMapping("/update")
 	public String update(UpdateEmployeeForm form) {
-		Employee employee = service.showDetail(form.getIntId());		
+		Employee employee = service.showDetail(form.getIntId());
+		BeanUtils.copyProperties(form, employee);
 		employee.setDependentsCount(form.getIntDependentsCount());
+		employee.setSalary(form.getIntSaraly());
+		employee.setHireDate(form.getDateHireDate());
+
 		service.update(employee);
 		return "redirect:/employee/showList";
 	}
